@@ -293,7 +293,7 @@ async def twilio_voice_webhook(request: Request):
             vr.say(greeting, voice='alice', language='en-US')
             vr.record(
                 action=f"{os.getenv('HOST', 'http://localhost:8000')}/api/twilio-voice",
-                method='POST', maxLength=30, playBeep=True, trim='trim-silence'
+                method='POST', maxLength=5, playBeep=True, trim='trim-silence'
             )
             xml = vr.to_xml()
             return Response(content=xml, media_type="application/xml")
@@ -347,7 +347,7 @@ async def twilio_voice_webhook(request: Request):
         else:
             vr.record(
                 action=f"{os.getenv('HOST', 'http://localhost:8000')}/api/twilio-voice",
-                method='POST', maxLength=30, playBeep=True, trim='trim-silence'
+                method='POST', maxLength=5, playBeep=True, trim='trim-silence'
             )
 
         xml = vr.to_xml()
